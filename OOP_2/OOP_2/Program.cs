@@ -87,6 +87,7 @@ namespace OOP_2
             string fourString = new string(arrayChar);
             firstString = String.Concat(secondString, thirdString); //cцепление
             firstString = String.Copy(secondString);
+
             firstString = fourString.Substring(1);
             string[] arrayString = fourString.Split(' ');
             for (int i = 0; i < arrayString.Length; i++)
@@ -104,6 +105,64 @@ namespace OOP_2
             fifthString = fifthString.Insert(0, "inserted fifth string");
             fifthString = String.Concat(sixthString, fifthString);
             Console.WriteLine(fifthString);
+
+            string abcd = "asdfkn";
+            string cde = "dfkn";
+            int count = 0;
+            Console.WriteLine("__________________________________");
+            Console.WriteLine();
+            if(abcd == cde)
+            {
+                Console.WriteLine("строки равны");
+            }
+            else
+            {
+                Console.WriteLine("строки не равны");
+            }
+            if (abcd.Length != cde.Length)
+            {
+                Console.WriteLine("строки не равны");
+            }
+            else
+            {
+                for (int i = 0; i < abcd.Length; i++)
+                {
+                    if (abcd[i] == cde[i])
+                    {
+                        count++;
+                    }
+                }
+                if (count == abcd.Length)
+                {
+                    Console.WriteLine("строки равны");
+                }
+                else
+                {
+                    Console.WriteLine("строки не равны");
+                }
+            }
+            Console.WriteLine("______________________________");
+            Console.WriteLine(abcd.Equals(cde));
+
+            if(abcd.CompareTo(cde) == 0)
+            {
+                Console.WriteLine("строки равны");
+            }
+            else
+            {
+                Console.WriteLine("строки не равны");
+            }
+            Console.WriteLine(abcd.Equals(cde));
+
+            if(String.Compare(abcd, cde) == 0)
+            {
+                Console.WriteLine("строки равны");
+            }
+            else
+            {
+                Console.WriteLine(String.Compare(abcd, cde));
+            }
+
             if (fifthString == sixthString)
             {
                 Console.WriteLine("Строка-то равна null!");
@@ -129,6 +188,8 @@ namespace OOP_2
                 }
                 Console.WriteLine();
             }
+           
+            Console.WriteLine(mass[1,1]);
             //Создайте одномерный массив строк. Выведите на консоль его содержимое, длину массива. Поменяйте произвольный 
             //элемент (пользователь определяет позицию и значение). 
             string[] arrayOfString = { "abc", "def", "kjfsfj" };

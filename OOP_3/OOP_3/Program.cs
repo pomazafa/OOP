@@ -98,7 +98,6 @@ namespace OOP_3
         private static double pi;
         private readonly int ID;
         private const int zero = 0;
-
     }
 
 
@@ -142,7 +141,6 @@ namespace OOP_3
             count++;
             ID = this.GetHashCode();
         }
-
        
         public Circle(double radius = 0)
         {
@@ -184,8 +182,8 @@ namespace OOP_3
 
         public Circle GetCircle(int x, int y)
         {
-            int a = 0;
-            return new Circle(ref a,ref  a);
+            int a = 5;
+            return new Circle(ref a, ref  a);
         }
 
         public void GetRadius(out int radius)
