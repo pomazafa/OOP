@@ -6,37 +6,37 @@ using System.Threading.Tasks;
 
 namespace OOP_4
 {
-    class Program
+    public static class MathOperation
     {
-        public static class MathOperation
+        public static int GetMax(Program.SetArray sa)
         {
-            public static int GetMax(SetArray sa)
-            {
-                return sa.Set.Max();
-            }
-            public static int GetMin(SetArray sa)
-            {
-                return sa.Set.Min();
-            }
-            public static int GetCount(SetArray sa)
-            {
-                return sa.Set.Count();
-            }
-            public static int GetCipher(string str)
-            {
-                return str.GetHashCode();
-            }
-
-            public static bool IsOrdered(SetArray sa)       //проверка на сортировку чисел по возрастанию
-            {
-                for (int i = 0; i < sa.Set.Count - 1; i++)
-                {
-                    if (sa % i > sa % (i + 1))
-                        return false;
-                }
-                return true;
-            }
+            return sa.Set.Max();
         }
+        public static int GetMin(Program.SetArray sa)
+        {
+            return sa.Set.Min();
+        }
+        public static int GetCount(Program.SetArray sa)
+        {
+            return sa.Set.Count();
+        }
+        public static int GetCipher(this string str)
+        {
+            return str.GetHashCode();
+        }
+
+        public static bool IsOrdered(this Program.SetArray sa)       //проверка на сортировку чисел по возрастанию
+        {
+            for (int i = 0; i < sa.Set.Count - 1; i++)
+            {
+                if (sa % i > sa % (i + 1))
+                    return false;
+            }
+            return true;
+        }
+    }
+    public class Program
+    {
         public class Owner
         {
             public int Id;
@@ -58,9 +58,11 @@ namespace OOP_4
         public class SetArray
         {
             public List<int> Set { get; set; }
+            public int k;
             public Owner OwnerOfSet;
             public class Date
             {
+
                 public int Year;
                 public int Month;
                 public int Day;
@@ -164,8 +166,8 @@ namespace OOP_4
             Console.WriteLine("Max in sa1: " + MathOperation.GetMax(sa1));
             Console.WriteLine("Min in sa1: " + MathOperation.GetMin(sa1));
             Console.WriteLine("Count of sa1: " + MathOperation.GetCount(sa1));
-            Console.WriteLine(MathOperation.GetCipher("abcs") + " - шифр строки abcs");
-            Console.WriteLine("sa1 отсортирован по возрастанию - " + MathOperation.IsOrdered(sa1));
+            Console.WriteLine("abcs".GetCipher() + " - шифр строки \"abcs\"");
+            Console.WriteLine("sa1 отсортирован по возрастанию - " + sa1.IsOrdered());
             Console.ReadKey();
         }
     }
