@@ -17,5 +17,10 @@ namespace OOP_5
         {
             return $"Type: {this.GetType().Name}; questions count: {this.Questions.Count}";
         }
+
+        public override void ShowQuestions()
+        {
+            Console.WriteLine("Не разрешено просматривать вопросы теста!");
+        }
     }
 }
