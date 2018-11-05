@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_5
 {
-    public abstract class Checkout
+    public abstract class Checkout : Exception
     {
         public string Subject { get; set; }
         public List<Question> Questions { get; set; }

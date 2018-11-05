@@ -20,6 +20,10 @@ namespace OOP_5
         public void AddExam(Checkout exam)
         {
             exams.Add(exam);
+            if (exams.Count > 5)
+            {
+                throw new SessionException("Слишком много экзаменов!");
+            }
         }
 
         public void AddTest(Checkout test)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace OOP_5
 {
@@ -37,6 +38,13 @@ namespace OOP_5
         }
         static void Main(string[] args)
         {
+            
+            st st1 = new st(1, "oooo");
+            Console.WriteLine("Вопрос номер " +  st1.number);
+            Console.WriteLine(st1.quest);
+            mark A = mark.A;
+            if((int)A == 5)
+                Console.WriteLine("A = 5");
             Session s1 = new Session();
             Exam ex1 = new Exam();
             ex1.Subject = "Math";
@@ -67,6 +75,68 @@ namespace OOP_5
             controller.GetChechoutCount();
             controller.GetExamsCountBySubject("Math");
             controller.GetTestCountByQuestionCount(2);
+
+            int[] aa = null;
+           // Debug.Assert(aa != null, "Values array cannot be null");
+
+            try
+            {
+                Question q6 = new Question();
+                //q6.Text = "";
+                s1.AddExam(ex1);
+                s1.AddExam(ex1);
+                s1.AddExam(ex1);
+                // s1.AddExam(ex1);
+
+                int i = 0;
+                //Console.WriteLine(1/i);
+
+                /*int[] k = { 5, 3, 2, 6 };
+                while (k[i] != 0)
+                {
+                    Console.WriteLine(k[i]);
+                    i++;
+                }*/
+
+                Question q = null;
+                //q.Text = string.Empty;
+            }
+
+            catch (QuestionException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            catch (SessionException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("Деление на 0 !!!\n");
+            }
+
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e);
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            finally
+            {
+                Console.WriteLine("Блоки try-catch пройдены.");
+            }
+
             /*Exam ex1 = new Exam();                        //5 lab
             ex1.Take();
             ((ITake)ex1).Take();

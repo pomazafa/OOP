@@ -8,7 +8,23 @@ namespace OOP_5
 {
     public sealed class Question
     {
-        public string Text { get; set; }
+        public string Text
+        {
+            get { return text; }
+            set
+            {
+                if (String.IsNullOrEmpty(value))
+                {
+                    throw new QuestionException("Передана пустая строка! Вопрос не задан.");
+                }
+                else
+                {
+                    text = value;
+                }   
+            }
+        }
+
+        private string text;
 
         public override bool Equals(object obj)
         {
