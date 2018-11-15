@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace OOP_5
 {
-    public class QuestionException : Exception
+    class ExamException : Exception
     {
-        public QuestionException(string message)
+        public ExamException(string message)
         : base(message)
         {
-            Console.WriteLine("Исключение QuestionException");
+            Console.WriteLine("Вызвано исключение ExamException");
         }
     }
 }

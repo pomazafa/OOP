@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace OOP_5
 {
@@ -76,17 +75,21 @@ namespace OOP_5
             controller.GetExamsCountBySubject("Math");
             controller.GetTestCountByQuestionCount(2);
 
-            int[] aa = null;
-           // Debug.Assert(aa != null, "Values array cannot be null");
+            FinalExam Fe = new FinalExam();
+            //Fe.ToString();
 
             try
             {
                 Question q6 = new Question();
-                //q6.Text = "";
+                q6.Text = "";
                 s1.AddExam(ex1);
                 s1.AddExam(ex1);
                 s1.AddExam(ex1);
                 // s1.AddExam(ex1);
+
+                Exam ex3 = new Exam();
+                ex3.Subject = "OOP";
+               // ex3.ToString();
 
                 int i = 0;
                 //Console.WriteLine(1/i);
@@ -108,6 +111,10 @@ namespace OOP_5
             }
 
             catch (SessionException e)
+            {
+                Console.WriteLine(e);
+            }
+            catch (ExamException e)
             {
                 Console.WriteLine(e);
             }

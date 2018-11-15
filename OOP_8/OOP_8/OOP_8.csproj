@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CEC2390E-1300-4B41-A727-CC61D184E95B}</ProjectGuid>
+    <ProjectGuid>{B77230AE-78FB-40E9-8EA4-B435B78266AA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>OOP_5</RootNamespace>
-    <AssemblyName>OOP_5</AssemblyName>
+    <RootNamespace>OOP_8</RootNamespace>
+    <AssemblyName>OOP_8</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,20 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Checkout.cs" />
-    <Compile Include="Exam.cs" />
-    <Compile Include="ExamException.cs" />
-    <Compile Include="FinalExam.cs" />
-    <Compile Include="ITake.cs" />
-    <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question.cs" />
-    <Compile Include="QuestionException.cs" />
-    <Compile Include="Session.cs" />
-    <Compile Include="SessionController.cs" />
-    <Compile Include="SessionException.cs" />
-    <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

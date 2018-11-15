@@ -22,6 +22,8 @@ namespace OOP_5
 
         public override string ToString()
         {
+            if (this.Questions.Count == 0)
+                throw new ExamException("Экзамен без вопросов, такого не может быть!");
             return $"Type: {this.GetType().Name}; questions count: {this.Questions.Count}";
         }
     }
