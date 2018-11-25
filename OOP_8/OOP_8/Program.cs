@@ -74,7 +74,7 @@ namespace OOP_8
                 Organization = organization;
             }
         }
-        public class SetArray<T> : IDo<T>
+        public class CollectionType<T> : IDo<T> where T : new()
         {
             public List<T> Set { get; set; }
             public int k;
@@ -115,20 +115,20 @@ namespace OOP_8
                     Console.WriteLine(t);
             }
 
-            public SetArray()
+            public CollectionType()
             {
                 Set = new List<T>();
                 OwnerOfSet = new Owner();
             }
-            public SetArray(int number, string Name, string organization, params T[] items)
+            public CollectionType(int number, string Name, string organization, params T[] items)
             {
                 Set = new List<T>();
                 Set.AddRange(items);
                 OwnerOfSet = new Owner(number, Name, organization);
             }
-            public static List<T> operator +(SetArray<T> setarr1, SetArray<T> setarr2)  //перегрузка +, чтобы объёдинял множества
+            public static List<T> operator +(CollectionType<T> setarr1, CollectionType<T> setarr2)  //перегрузка +, чтобы объёдинял множества
             {
-                SetArray<T> setarr3 = new SetArray<T>();
+                CollectionType<T> setarr3 = new CollectionType<T>();
                 foreach (var x in setarr1.Set)
                 {
                     setarr3.Set.Add(x);
@@ -143,25 +143,25 @@ namespace OOP_8
                 return setarr3.Set;
             }
 
-            public static bool operator <=(SetArray<T> sa1, SetArray<T> sa2)     //перегрузка <= and >=, чтобы сравнивали мощность
+            public static bool operator <=(CollectionType<T> sa1, CollectionType<T> sa2)     //перегрузка <= and >=, чтобы сравнивали мощность
             {
                 if (sa1.Set.Capacity <= sa2.Set.Capacity)
                     return true;
                 else
                     return false;
             }
-            public static bool operator >=(SetArray<T> sa1, SetArray<T> sa2)
+            public static bool operator >=(CollectionType<T> sa1, CollectionType<T> sa2)
             {
                 if (sa1.Set.Capacity >= sa2.Set.Capacity)
                     return true;
                 else
                     return false;
             }
-            public static T operator %(SetArray<T> sa, int num)
+            public static T operator %(CollectionType<T> sa, int num)
             {
                 return sa.Set[num];
             }
-            public static implicit operator int(SetArray<T> sa)
+            public static implicit operator int(CollectionType<T> sa)
             {
                 return sa.Set.Count;
             }
@@ -176,12 +176,13 @@ namespace OOP_8
 
             try
             {
-                SetArray<int> sa1 = new SetArray<int>(1000001, "Oleg", "NPD", 1, 2, 3);
-                SetArray<int> sa2 = new SetArray<int>(1111100, "Kate", "Kolesnik", 3, 4, 5);
-                SetArray<int> sa3 = new SetArray<int>();
-                SetArray<string> sa4 = new SetArray<string>(1000111, "Nick", "Hyper", "abc", "def", "ghi");
-                SetArray<string> sa5 = new SetArray<string>(1001011, "Jim", "Kelmi", "cba", "def");
-                SetArray<float> sa6 = new SetArray<float>(1101101, "John", "Klimbing", (float)2.2, 1212, 9, (float)3189.31, 213);
+                CollectionType<int> sa1 = new CollectionType<int>(1000001, "Oleg", "NPD", 1, 2, 3);
+                CollectionType<int> sa2 = new CollectionType<int>(1111100, "Kate", "Kolesnik", 3, 4, 5);
+                CollectionType<int> sa3 = new CollectionType<int>();
+                CollectionType<double> sa4 = new CollectionType<double>(1000111, "Nick", "Hyper", 1234.123333333333333333333, 412374681.123);
+                CollectionType<double> sa5 = new CollectionType<double>(1001011, "Jim", "Kelmi",321.1111111111111, 1.2);
+                CollectionType<char> sa8 = new CollectionType<char>(1001011, "Jim", "Kelmi", 'a', 'e');
+                CollectionType<float> sa6 = new CollectionType<float>(1101101, "John", "Klimbing", (float)2.2, 1212, 9, (float)3189.31, 213);
                 sa3.Set = sa1 + sa2;
                 foreach (var item in sa3.Set)
                 {
@@ -205,17 +206,17 @@ namespace OOP_8
                     Console.WriteLine(item);
                 }
 
-                sa4.add("eeeeeee");
-                sa5.delete("abc");
+                sa4.add(44444);
+                sa5.delete(1.2);
                 Console.WriteLine("Информация о sa5:");
                 sa5.show();
                 Console.WriteLine("Информация о sa6:");
                 sa6.show();
 
                 Question q1 = new Question();
-                q1.Text = "Oh, it's question";
+                q1.Text = "Oh, it's a question";
 
-                SetArray<Question> sa7 = new SetArray<Question>(1110000, "Katrin", "Zippo", q1);
+                CollectionType<Question> sa7 = new CollectionType<Question>(1110000, "Katrin", "Zippo", q1);
                 Console.WriteLine("Информация о sa7:");
                 sa7.show();
 
