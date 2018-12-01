@@ -29,13 +29,13 @@ namespace OOP_9
                 }
             }
 
-            public void OnTurnOn()
+            public void OnTurnOn(int u)
             {
                 if (!broken)
                 {
                     if (!on)
                     {
-                        Console.WriteLine("Телевизор включен.");
+                        Console.WriteLine("Телевизор включен под напряжением " + u);
                         on = true;
                     }
                     else
@@ -56,13 +56,13 @@ namespace OOP_9
                 }
             }
 
-            public void OnTurnOn()
+            public void OnTurnOn(int u)
             {
                 if(!broken)
                 {
                     if (!on)
                     {
-                        Console.WriteLine("Радио включено.");
+                        Console.WriteLine("Радио включено под напряжением " + u);
                         on = true;
                     }
                     else
@@ -83,12 +83,11 @@ namespace OOP_9
                         Console.WriteLine("В данный момент лэптоп не улучшить, он влючен в сеть!");
                 }
             }
-            public void OnTurnOn()
+            public void OnTurnOn(int u)
             {
                 if (!broken)
                 {
-                    Console.WriteLine("Введите требуемое значение напряжения: ");
-                    Console.WriteLine("Лэптоп включается под напряжением " + Convert.ToInt32(Console.ReadLine()));
+                    Console.WriteLine("Лэптоп включается под напряжением " + u);
                     on = true;
                 }
                 else
@@ -98,22 +97,23 @@ namespace OOP_9
 
         public class Boss
         {
-            public event D Upgrade;
+            public event C Upgrade;
             public event D TurnOn;
             public void CommandUpgrade()
             {
                 if ((Upgrade != null) && !brokenMen)
                     Upgrade();
             }
-            public void CommandTurnOn()
+            public void CommandTurnOn(int u)
             {
                 if ((TurnOn != null) && !brokenMen)
-                    TurnOn();
+                    TurnOn(u);
             }
             public bool brokenMen = false;
         }
 
-        public delegate void D();
+        public delegate void D(int u);
+        public delegate void C();
 
         public class StringOperation
         {
@@ -178,12 +178,19 @@ namespace OOP_9
                 Radio R1 = new Radio();
                 TV T1 = new TV();
 
+
+                D d1 = T1.OnTurnOn;
+                d1.Invoke(4);
+                d1 += T1.OnTurnOn;
+
+                
                 L1.broken = true;
                 hero.TurnOn += L1.OnTurnOn;
                 hero.TurnOn += R1.OnTurnOn;
                 hero.TurnOn += T1.OnTurnOn;
+                hero.TurnOn += n => Console.WriteLine("Приборы включаются под напряжением " + n);
 
-                hero.CommandTurnOn();
+                hero.CommandTurnOn(4);
                 hero.brokenMen = true;
                 hero.Upgrade += T1.OnUpgrade;
 
