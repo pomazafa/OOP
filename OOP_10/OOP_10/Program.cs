@@ -113,8 +113,13 @@ namespace OOP_10
             {
                 Console.WriteLine(st.age);
             }
+            n = 2;
+            for (int i = 0; i < n; i++)
+            {
+                listOfStudents.Remove(listOfStudents[0]);
+            }           
 
-            void metod(object sender, NotifyCollectionChangedEventArgs e)
+            void change(object sender, NotifyCollectionChangedEventArgs e)
             {
                 switch (e.Action)
                 {
@@ -127,13 +132,20 @@ namespace OOP_10
                     case NotifyCollectionChangedAction.Replace:
                         Console.WriteLine("Замена объекта");
                         break;
+                    case NotifyCollectionChangedAction.Move:
+                        Console.WriteLine("Перемещение объекта");
+                        break;
+                    case NotifyCollectionChangedAction.Reset:
+                        Console.WriteLine("Содержимое коллекции удалено");
+                        break;
                 }
             }
             ObservableCollection<Student> students = new ObservableCollection<Student>();
             students.Add(s1);
-            students.CollectionChanged += metod;
+            students.CollectionChanged += change;
             students.Add(new Student(44, "Jim"));
             students.Remove(s1);
+
             Console.ReadKey();
         }
     }

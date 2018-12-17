@@ -1,0 +1,13 @@
+Full name = OOP_12.Date
+
+Members: 
+GetDate
+SetDay
+Test
+ToString
+Equals
+GetHashCode
+GetType
+.ctor
+day
+year
