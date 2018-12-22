@@ -37,9 +37,9 @@ namespace OOP_12
             day = d;
         }
 
-        public void Test(string lol)
+        public void Test(string lol, string k)
         {
-            Console.WriteLine(lol + ' ' + day + "." + month + '.' + year);
+            Console.WriteLine(lol + k + ' ' + day + "." + month + '.' + year);
         }
     }
 }

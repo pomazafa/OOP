@@ -17,6 +17,9 @@ namespace OOP_12
                 StreamWriter sw = new StreamWriter(@"C:\Users\Полина\Desktop\ООП\labs\OOP_12\eee.txt");
                 Type t = typeof(Date);
                 Type t2 = typeof(int);
+                Type t3 = typeof(Student);
+
+                Console.WriteLine("Date");
                 Reflector.GetMembers(t, sw);
                 sw.Close();
 
@@ -26,7 +29,12 @@ namespace OOP_12
                 Reflector.GetMethodsWithParam(t, t2);
                 Date d1 = new Date(15, 22, 1922);
                 Reflector r1 = new Reflector();
+
                 r1.Runtimemethod(d1, "Test");
+
+                Console.WriteLine("\nStudent");
+                Reflector.GetPublicMethods(t3);
+                Reflector.GetFieldsAndProperties(t3);
             }
             catch(Exception e)
             {

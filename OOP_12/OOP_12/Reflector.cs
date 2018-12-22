@@ -13,39 +13,6 @@ namespace OOP_12
         public static void GetMembers(Type t, StreamWriter sw)
         {
             sw.WriteLine("Full name = " + t.FullName);
-
-            /*foreach (Type iType in t.GetInterfaces())
-            {
-                sw.WriteLine(iType.Name);
-            }
-            sw.WriteLine("\nFields: ");
-            foreach (FieldInfo fi in t.GetFields())
-            {
-                sw.WriteLine(fi.Name);
-            }
-            sw.WriteLine("\nProperties:");
-            foreach(PropertyInfo pi in t.GetProperties())
-            {
-               sw.WriteLine(pi.Name);
-            }
-            sw.WriteLine("\nMethods: ");
-            foreach (MethodInfo mi in t.GetMethods())
-            {
-                sw.WriteLine(mi.Name);
-            }
-            sw.WriteLine("\nConstructors with parameters: ");
-            foreach (ConstructorInfo ci in t.GetConstructors())
-            {
-                
-                foreach(ParameterInfo pi in ci.GetParameters())
-                    sw.Write(pi.ParameterType + " " + pi.Name + "     ");
-                sw.WriteLine();
-            }
-            sw.WriteLine("\nEvents: ");
-            foreach (EventInfo ei in t.GetEvents())
-            {
-                sw.WriteLine(ei.Name);
-            }*/
             sw.WriteLine("\nMembers: ");
             foreach (MemberInfo mi in t.GetMembers())
             {
@@ -55,7 +22,7 @@ namespace OOP_12
 
         public static void GetPublicMethods(Type t)
         {
-            Console.WriteLine("Public methods: ");
+            Console.WriteLine("\nPublic methods: ");
             foreach (MethodInfo mi in t.GetMethods())
             {
                 if(mi.IsPublic)
@@ -65,7 +32,7 @@ namespace OOP_12
 
         public static void GetFieldsAndProperties(Type t)
         {
-            Console.WriteLine("Fields: ");
+            Console.WriteLine("\nFields: ");
             foreach (FieldInfo fi in t.GetFields())
             {
                 Console.WriteLine(fi.Name);
@@ -79,7 +46,7 @@ namespace OOP_12
 
         public static void GetInterfaces(Type t)
         {
-            Console.WriteLine("Interfaces:");
+            Console.WriteLine("\nInterfaces:");
             foreach(var ii in t.GetInterfaces())
             {
                 Console.WriteLine(ii.Name);
@@ -90,7 +57,7 @@ namespace OOP_12
         public static void GetMethodsWithParam(Type t1, Type t2)
         {
 
-            Console.WriteLine("Methods with param " + t2 + ": ");
+            Console.WriteLine("\nMethods with param " + t2 + ": ");
             foreach (MethodInfo mi in t1.GetMethods())
             {
                 foreach (ParameterInfo pi in mi.GetParameters())
@@ -106,9 +73,11 @@ namespace OOP_12
             FileStream fstream = new FileStream("C:\\Users\\Полина\\Desktop\\ООП\\labs\\OOP_12\\params.txt", FileMode.OpenOrCreate);
             StreamReader streamReader = new StreamReader(fstream);
             string par;
-            par = streamReader.ReadToEnd();
-            string[] parametrs = new string[1];
+            par = streamReader.ReadLine();
+            string par2 = streamReader.ReadLine();
+            string[] parametrs = new string[2];
             parametrs[0] = par;
+            parametrs[1] = par2;
             MethodInfo meth = SS.GetType().GetMethod(method);
             meth.Invoke(SS, parametrs);
         }
