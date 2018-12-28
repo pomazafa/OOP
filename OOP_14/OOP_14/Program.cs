@@ -20,65 +20,65 @@ namespace OOP_14
         {
             try
             {
-                Console.WriteLine("Binary");
+                //Console.WriteLine("Binary");
                 FinalExam fi = new FinalExam();
-                fi.countOfQuest = 73;
-                BinaryFormatter formatter = new BinaryFormatter();
-                using (FileStream fs = new FileStream("finalExam.txt",
-                FileMode.OpenOrCreate))
-                {
-                    formatter.Serialize(fs, fi);
-                }
+                //fi.countOfQuest = 73;
+                //BinaryFormatter formatter = new BinaryFormatter();
+                //using (FileStream fs = new FileStream("finalExam.txt",
+                //FileMode.OpenOrCreate))
+                //{
+                //    formatter.Serialize(fs, fi);
+                //}
 
-                using (FileStream fs = new FileStream("finalExam.txt", FileMode.OpenOrCreate))
-                {
-                    FinalExam final = (FinalExam)formatter.Deserialize(fs);
-                    Console.WriteLine($"Count of Questions: {final.countOfQuest}");
-                }
+                //using (FileStream fs = new FileStream("finalExam.txt", FileMode.OpenOrCreate))
+                //{
+                //    FinalExam final = (FinalExam)formatter.Deserialize(fs);
+                //    Console.WriteLine($"Count of Questions: {final.countOfQuest}");
+                //}
 
-                Console.WriteLine("soap");
-                SoapFormatter soapFormatter = new SoapFormatter();
-                using (Stream fStream = new FileStream("finalExam.txt",
-                FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
-                {
-                    soapFormatter.Serialize(fStream, fi);
-                }
+                //Console.WriteLine("soap");
+                //SoapFormatter soapFormatter = new SoapFormatter();
+                //using (Stream fStream = new FileStream("finalExam.txt",
+                //FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
+                //{
+                //    soapFormatter.Serialize(fStream, fi);
+                //}
 
-                using (FileStream fs = new FileStream("finalExam.txt", FileMode.OpenOrCreate))
-                {
-                    FinalExam final = (FinalExam)soapFormatter.Deserialize(fs);
-                    Console.WriteLine($"Count of Questions: {final.countOfQuest}");
-                }
+                //using (FileStream fs = new FileStream("finalExam.txt", FileMode.OpenOrCreate))
+                //{
+                //    FinalExam final = (FinalExam)soapFormatter.Deserialize(fs);
+                //    Console.WriteLine($"Count of Questions: {final.countOfQuest}");
+                //}
 
-                Console.WriteLine("json");
+                //Console.WriteLine("json");
 
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(FinalExam));
-                using (FileStream fs = new FileStream("finalExam.json", FileMode.OpenOrCreate))
-                {
-                    jsonFormatter.WriteObject(fs, fi);
-                }
+                //DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(FinalExam));
+                //using (FileStream fs = new FileStream("finalExam.json", FileMode.OpenOrCreate))
+                //{
+                //    jsonFormatter.WriteObject(fs, fi);
+                //}
 
-                using (FileStream fs = new FileStream("finalExam.json", FileMode.OpenOrCreate))
-                {
-                    FinalExam final = (FinalExam)jsonFormatter.ReadObject(fs);
-                    Console.WriteLine($"Count of Questions: {final.countOfQuest}");
-                }
+                //using (FileStream fs = new FileStream("finalExam.json", FileMode.OpenOrCreate))
+                //{
+                //    FinalExam final = (FinalExam)jsonFormatter.ReadObject(fs);
+                //    Console.WriteLine($"Count of Questions: {final.countOfQuest}");
+                //}
 
-                Console.WriteLine("xml");
+                //Console.WriteLine("xml");
 
-                XmlSerializer xSer = new XmlSerializer(typeof(FinalExam));
-                using (FileStream fs = new FileStream("finalExam.xml", FileMode.OpenOrCreate))
-                {
-                    xSer.Serialize(fs, fi);
-                }
+                //XmlSerializer xSer = new XmlSerializer(typeof(FinalExam));
+                //using (FileStream fs = new FileStream("finalExam.xml", FileMode.OpenOrCreate))
+                //{
+                //    xSer.Serialize(fs, fi);
+                //}
 
-                using (FileStream fs = new FileStream("finalExam.xml", FileMode.OpenOrCreate))
-                {
-                    FinalExam final = xSer.Deserialize(fs) as FinalExam;
-                    Console.WriteLine($"Count of Questions: {final.countOfQuest}");
-                }
+                //using (FileStream fs = new FileStream("finalExam.xml", FileMode.OpenOrCreate))
+                //{
+                //    FinalExam final = xSer.Deserialize(fs) as FinalExam;
+                //    Console.WriteLine($"Count of Questions: {final.countOfQuest}");
+                //}
 
-                
+
                 // 2 задание
                 Console.WriteLine("\nArray");
                 FinalExam[] finalExams = new FinalExam[] { new FinalExam(44), fi, new FinalExam(82), new FinalExam(40) };
@@ -87,53 +87,71 @@ namespace OOP_14
                 finalExams[2].Subject = "Chemistry";
                 finalExams[3].Subject = "PE";
 
-                XmlSerializer xSer2 = new XmlSerializer(typeof(FinalExam[]));
+                //XmlSerializer xSer2 = new XmlSerializer(typeof(FinalExam[]));
 
-                using (FileStream fs = new FileStream("Exams.xml", FileMode.OpenOrCreate))
+                //using (FileStream fs = new FileStream("Exams.xml", FileMode.OpenOrCreate))
+                //{
+                //    xSer2.Serialize(fs, finalExams);
+                //}
+
+                //using (FileStream fs = new FileStream("Exams.xml", FileMode.OpenOrCreate))
+                //{
+                //    FinalExam[] fis = (FinalExam[])xSer2.Deserialize(fs);
+                //    foreach (FinalExam fe in fis)
+                //        Console.WriteLine($"Count of Questions: {fe.countOfQuest}");
+                //}
+
+                Console.WriteLine("________________________");
+                DataContractJsonSerializer jsonFormatter2 = new DataContractJsonSerializer(typeof(FinalExam[]));
+                using (FileStream fs = new FileStream("eee.json", FileMode.OpenOrCreate))
                 {
-                    xSer2.Serialize(fs, finalExams);
+                   
+                        jsonFormatter2.WriteObject(fs, finalExams);
+                    
                 }
-
-                using (FileStream fs = new FileStream("Exams.xml", FileMode.OpenOrCreate))
+                FinalExam[] finals = null;
+                using (FileStream fs = new FileStream("eee.json", FileMode.OpenOrCreate))
                 {
-                    FinalExam[] fis = (FinalExam[])xSer2.Deserialize(fs);
-                    foreach (FinalExam fe in fis)
-                        Console.WriteLine($"Count of Questions: {fe.countOfQuest}");
+
+                    finals = (FinalExam[])jsonFormatter2.ReadObject(fs);
+                    
                 }
-
-
+                foreach (FinalExam fin in finals)
+                {
+                    Console.WriteLine($"Count of Questions: {fin.countOfQuest}");
+                }
                 // 3 задание
-                Console.WriteLine();
-                XmlDocument xDoc = new XmlDocument();
-                xDoc.Load("Exams.xml");
-                XmlElement xRoot = xDoc.DocumentElement;
+                //Console.WriteLine();
+                //XmlDocument xDoc = new XmlDocument();
+                //xDoc.Load("Exams.xml");
+                //XmlElement xRoot = xDoc.DocumentElement;
 
-                XmlNode childnode = xRoot.SelectSingleNode("FinalExam[Subject='Math']");
-                if (childnode != null)
-                    Console.WriteLine(childnode.OuterXml);
+                //XmlNode childnode = xRoot.SelectSingleNode("FinalExam[Subject='Math']");
+                //if (childnode != null)
+                //    Console.WriteLine(childnode.OuterXml);
 
-                Console.WriteLine();
+                //Console.WriteLine();
 
-                XmlNodeList childnodes = xRoot.SelectNodes("FinalExam[countOfQuest>45]");
-                foreach (XmlNode n in childnodes)
-                    Console.WriteLine(n.OuterXml);
+                //XmlNodeList childnodes = xRoot.SelectNodes("FinalExam[countOfQuest>45]");
+                //foreach (XmlNode n in childnodes)
+                //    Console.WriteLine(n.OuterXml);
 
 
-                // 4 задание
+                //// 4 задание
 
-                XDocument xDocument = XDocument.Load("exams.xml");
+                //XDocument xDocument = XDocument.Load("exams.xml");
 
-                var exs = xDocument.Element("ArrayOfFinalExam").Elements("FinalExam").Select(q => new
-                {
-                    subject = q.Element("Subject").Value,
-                    count = q.Element("countOfQuest").Value,
-                });
-                using(StreamWriter sw = new StreamWriter("second.xml"))
-                foreach (var x in exs)
-                {
-                    sw.WriteLine($"{x.subject} — {x.count} questions;");
-                }
-                Console.WriteLine();
+                //var exs = xDocument.Element("ArrayOfFinalExam").Elements("FinalExam").Select(q => new
+                //{
+                //    subject = q.Element("Subject").Value,
+                //    count = q.Element("countOfQuest").Value,
+                //});
+                //using(StreamWriter sw = new StreamWriter("second.xml"))
+                //foreach (var x in exs)
+                //{
+                //    sw.WriteLine($"{x.subject} — {x.count} questions;");
+                //}
+                //Console.WriteLine();
 
             }
             catch (Exception e)
